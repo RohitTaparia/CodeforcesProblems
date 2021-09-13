@@ -1,57 +1,41 @@
-#include <iostream>
-#include <vector>
-#include<string>
-#include <bits/stdc++.h>
+include <bits/stdc++.h>
+#define lowbit(x) (x & (-x))
+#include <time.h>
 using namespace std;
-int findIndex(int arr[], int N, int K)
+typedef long long ll;
+typedef pair<int, int> PII;
+const ll LLINF = 0x3f3f3f3f3f3f3f3f;
+const int INF = 0x3f3f3f3f;
+const double DINF = 1e20;
+const long double eps = 1e-15;
+const double PI = acos(-1.0);
+const int maxn = 1e6+1000;
+typedef long long ll;
+
+int main()
 {
-    reverse(arr, arr + N);
-    auto it = find(arr, arr + N, K);
-    if (it == arr + N) {
-        return -1;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,m;
+        cin>>n>>m;
+        vector<int>vec;
+        ll sum=0;
+        for(int i=0;i<m;i++)
+        {
+            int x;
+            scanf("%d",&x);
+            int num=0;
+            for(int j=0;j<vec.size();j++)
+            {
+                if(vec[j]<x)
+                    num++;
+            }
+            vec.push_back(x);
+            sum+=num;
+        }
+        cout<<sum<<"\n";
     }
-    return (N - distance(arr, it) - 1);
+    return 0;
 }
-
-	int main() {
-		// TODO Auto-generated method stub
-		int t;
-		cin>>t;
-		
-		for(int i=1;i<=t;i++) {
-            int n,k,m,sum=0;
-			cin>>n;
-			cin>>m;
-			int arr[m];
-			int arr1[m];
-			int arr2[m];
-			for(int j=0;j<m;j++){
-				cin>>arr[j];
-			}
-			for(int j=0;j<m;j++){
-				arr1[j]=arr[j];
-				arr2[j]=23000;
-			}
-			sort(arr1,arr1+m);
-			/*for(int j=0;j<m;j++){
-				cout<<arr1[j];
-			}*/
-			for(int j=0;j<m;j++){
-				for(k=0;k<m;k++){
-					if(arr[j]==arr1[k])
-						break;
-				}
-				//cout<<k<<"\n";
-				arr2[k]=0;
-				for(int z=0;z<k;z++){
-					if(arr2[z]==0)
-						sum++;
-				}
-                //cout<<sum<<"\n";
-			}
-			cout<<sum<<"\n";
-		}
-	}
-	
-	
-
